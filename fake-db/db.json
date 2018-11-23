@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Roberto Torres",
+      "pets": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "José Enrique González Jiménez",
+      "pets": [
+        3
+      ],
+      "id": 2
+    }
+  ],
+  "pets": [
+    {
+      "id": 1,
+      "name": "Balam",
+      "species": 1
+    },
+    {
+      "id": 2,
+      "name": "Napoleón",
+      "species": 2
+    },
+    {
+      "name": "Octagón",
+      "species": 2,
+      "id": 3
+    }
+  ],
+  "species": [
+    {
+      "id": 1,
+      "name": "gato"
+    },
+    {
+      "id": 2,
+      "name": "perro"
+    }
+  ]
+}
