@@ -20,6 +20,24 @@ findAll = (req,res,next) => {
 }
 
 
+
+
+findOne = (req,res,next) => {
+
+    SpeciesModel.findOne({_id: req.params.id}, function (err, species) {
+
+        if ( !! err ){
+            console.log(err)
+            res.send( err )
+        }
+
+        res.send(species)
+
+      })
+
+}
+
+
 create = ( req, res, next ) => {
 
     let name = req.body.name;
@@ -92,7 +110,7 @@ remove = ( req, res, next ) => {
 
 module.exports = {
     findAll,
-    // findOne,
+    findOne,
     create,
     patch,
     remove
