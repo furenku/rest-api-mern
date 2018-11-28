@@ -1,4 +1,5 @@
 var UserModel = require('../models/user-model');
+var PetModel = require('../models/pet-model');
 
 
 findAll = (req,res,next) => {
@@ -41,23 +42,65 @@ findOne = (req,res,next) => {
 create = ( req, res, next ) => {
 
     let name = req.body.name;
+    let pets = req.body.pets;
 
-    let newUser = new UserModel({ name: name })
+    let newUser = new UserModel({
+        name,
+        pets
+    })
 
-    newUser.save( (err,newUserRecord) => {
+    if( !! pets ) {
+
+        if( pets.length > 0 ) {
 
 
-        if( !! err ) { 
-
-            console.error( err );
+            PetModel.find({
+                '_id': { $in: pets }
+            }, function(err, petsFound){
             
-            res.send( err )
+                if( !! err ) {
+                    console.log( err );
+                    res.send( err )
+                }
+
+                if( petsFound.length === pets.length ) {
+                    newUser.save( (err,newUserRecord) => {
+
+                        if( !! err ) { 
+            
+                            console.error( err );
+                            
+                            res.send( err )
+            
+                        }
+            
+                        res.send( newUserRecord )
+            
+                    })
+                } else {
+                    res.send(JSON.stringify({error: "some pets not found" }))
+                }
+            
+            });
 
         }
+    } else {
 
-        res.send( newUserRecord )
+        newUser.save( (err,newUserRecord) => {
 
-    })
+            if( !! err ) { 
+
+                console.error( err );
+                
+                res.send( err )
+
+            }
+
+            res.send( newUserRecord )
+
+        })
+
+    }
 
 }
 
