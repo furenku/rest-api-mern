@@ -70,10 +70,9 @@ put = (req,res,next) => {
             res.send( err )
         }
         
-        if ( !! req.body.name && !! req.body.family ) {
+        if ( !! req.body.name ) {
             
             user.name = req.body.name;
-            user.family = req.body.family;
             
         }
         
@@ -105,10 +104,6 @@ patch = (req,res,next) => {
         
         if ( !! req.body.name ) {
             user.name = req.body.name;
-        }
-
-        if ( !! req.body.family ) {
-            user.family = req.body.family;
         }
         
         user.save(function (err, savedUser) {

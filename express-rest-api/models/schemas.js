@@ -5,7 +5,7 @@ var Species = require('./species-model')
 var UserSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        // required: true
     },
     pets: {
         type: [mongoose.Schema.Types.ObjectId]
