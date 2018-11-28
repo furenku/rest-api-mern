@@ -42,4 +42,9 @@ app.patch('/api/users/:id', UserController.patch );
 app.delete('/api/users/:id', UserController.remove );
 
 
+app.get('/api/users/:id/pets/', UserController.getPets )
+app.post('/api/users/:id/pets/', UserController.addPet )
+app.delete('/api/users/:id/pets/:pet_id', UserController.deletePet )
+
+
 app.listen( 3000, () => { console.log("app en 3000" )});
