@@ -61,6 +61,38 @@ create = ( req, res, next ) => {
 
 }
 
+put = (req,res,next) => {
+
+    SpeciesModel.findOne({_id: req.params.id}, function (err, species) {
+
+        if ( !! err ){
+            console.log(err)
+            res.send( err )
+        }
+        
+        if ( !! req.body.name && !! req.body.family ) {
+            
+            species.name = req.body.name;
+            species.family = req.body.family;
+            
+        }
+        
+        species.save(function (err, savedSpecies) {
+            
+            if ( !! err ){
+                console.log(err)
+                res.send( err )
+            }
+            
+            res.send(savedSpecies)
+
+        })
+    
+      })
+
+
+}
+
 
 patch = (req,res,next) => {
 
@@ -71,7 +103,13 @@ patch = (req,res,next) => {
             res.send( err )
         }
         
-        if (req.body.name) species.name = req.body.name
+        if ( !! req.body.name ) {
+            species.name = req.body.name;
+        }
+
+        if ( !! req.body.family ) {
+            species.family = req.body.family;
+        }
         
         species.save(function (err, savedSpecies) {
             
@@ -112,6 +150,7 @@ module.exports = {
     findAll,
     findOne,
     create,
+    put,
     patch,
     remove
 }

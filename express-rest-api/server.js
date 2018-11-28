@@ -21,6 +21,7 @@ app.get('/', (req,res,next) => {
 app.get('/api/species', SpeciesController.findAll );
 app.get('/api/species/:id', SpeciesController.findOne );
 app.post('/api/species', SpeciesController.create );
+app.put('/api/species/:id', SpeciesController.put );
 app.patch('/api/species/:id', SpeciesController.patch );
 app.delete('/api/species/:id', SpeciesController.remove );
 

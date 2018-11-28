@@ -24,7 +24,11 @@ var PetSchema = mongoose.Schema({
 var SpeciesSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        // required: true
+    },
+    family: {
+        type: String,
+        // required: true
     }
 })
 
