@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+var Species = require('./species-model')
+
 var UserSchema = mongoose.Schema({
     name: {
         type: String,
@@ -17,7 +19,9 @@ var PetSchema = mongoose.Schema({
         required: true
     },
     species: {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        // required: true,
+        ref: "Species"
     }
 })
 
